@@ -1,5 +1,3 @@
-// src/state/appSlice.test.ts
-
 import appReducer, {
   setMusicFile,
   setWeatherData,

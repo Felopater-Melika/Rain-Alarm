@@ -15,7 +15,6 @@ jest.mock('expo-document-picker', () => ({
   }),
 }));
 
-// Mock the FileSystem.readAsStringAsync function
 jest.mock('expo-file-system', () => ({
   readAsStringAsync: jest.fn().mockResolvedValue('file.mp3'),
 }));

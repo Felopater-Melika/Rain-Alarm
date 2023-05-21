@@ -1,5 +1,3 @@
-// src/components/Alarm.tsx
-
 import React from 'react';
 import { Button, Text } from '@ui-kitten/components';
 import { useSelector, useDispatch } from 'react-redux';
