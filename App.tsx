@@ -8,15 +8,15 @@ import MusicPicker from './src/components/MusicPicker';
 import Alarm from './src/components/Alarm';
 
 const App = () => {
-    return (
-        <Provider store={store}>
-            <IconRegistry icons={EvaIconsPack} />
-            <ApplicationProvider {...eva} theme={eva.dark}>
-                <MusicPicker />
-                <Alarm />
-            </ApplicationProvider>
-        </Provider>
-    );
+  return (
+    <Provider store={store}>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={eva.dark}>
+        <MusicPicker />
+        <Alarm />
+      </ApplicationProvider>
+    </Provider>
+  );
 };
 
 export default App;

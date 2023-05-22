@@ -5,7 +5,7 @@ class NotificationService {
   private notificationListener: Notifications.Subscription | null;
   private responseListener: Notifications.Subscription | null;
 
-  constructor() {
+  public constructor() {
     this.notificationListener = null;
     this.responseListener = null;
   }
@@ -35,11 +35,11 @@ class NotificationService {
     return token;
   }
 
-  async scheduleNotification() {
+  async scheduleNotification(title: string, body: string) {
     await Notifications.scheduleNotificationAsync({
       content: {
-        title: "It's going to rain! 🌧️",
-        body: 'Remember to take your umbrella!',
+        title,
+        body,
       },
       trigger: { seconds: 2 },
     });
@@ -57,7 +57,15 @@ class NotificationService {
         console.log(response);
       });
   }
-
+  async scheduleAlarm(trigger: Date, soundName: string) {
+    const oneHourBefore = new Date(trigger.getTime() - 60 * 60 * 1000);
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        sound: soundName,
+      },
+      trigger: oneHourBefore,
+    });
+  }
   stopListening() {
     if (this.notificationListener) {
       Notifications.removeNotificationSubscription(this.notificationListener);

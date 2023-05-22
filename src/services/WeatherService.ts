@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export class WeatherService {
+export default class WeatherService {
   private static instance: WeatherService;
   private apiKey = process.env.WEATHER_API_KEY;
 

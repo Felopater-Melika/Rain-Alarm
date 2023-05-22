@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { WeatherService } from '../../src/services/WeatherService';
+import WeatherService from '../../src/services/WeatherService';
 
 jest.mock('axios');
 

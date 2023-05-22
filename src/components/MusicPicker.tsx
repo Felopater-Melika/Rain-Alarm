@@ -10,6 +10,7 @@ const MusicPicker = () => {
   const musicFile = useSelector((state: RootState) => state.app.musicFile);
   const dispatch = useDispatch<AppDispatch>();
 
+  // TODO: get permissions for file picker
   const handleSelectMusicFile = async () => {
     const result = await DocumentPicker.getDocumentAsync({ type: 'audio/*' });
 

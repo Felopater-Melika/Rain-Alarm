@@ -19,6 +19,8 @@ jest.mock('expo-file-system', () => ({
   readAsStringAsync: jest.fn().mockResolvedValue('file.mp3'),
 }));
 
+// TODO: test file picker and permissions
+
 describe('MusicPicker', () => {
   it('renders correctly', () => {
     const { getByText } = render(<MusicPicker />);

@@ -53,9 +53,18 @@ describe('NotificationService', () => {
   });
 
   it('schedules a notification', async () => {
-    await notificationService.scheduleNotification();
+    const title = 'title';
+    const body = 'body';
 
-    expect(Notifications.scheduleNotificationAsync).toHaveBeenCalled();
+    await notificationService.scheduleNotification(title, body);
+
+    expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith({
+      content: {
+        title,
+        body,
+      },
+      trigger: { seconds: 2 },
+    });
   });
 
   it('receives a notification', () => {
@@ -77,5 +86,20 @@ describe('NotificationService', () => {
     expect(Notifications.removeNotificationSubscription).toHaveBeenCalledWith(
       mockSubscription,
     );
+  });
+
+  it('should schedule an alarm one hour before the trigger time', async () => {
+    const trigger = new Date();
+    const soundName = 'alarm.mp3';
+
+    await notificationService.scheduleAlarm(trigger, soundName);
+
+    const oneHourBefore = new Date(trigger.getTime() - 60 * 60 * 1000);
+    expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith({
+      content: {
+        sound: soundName,
+      },
+      trigger: oneHourBefore,
+    });
   });
 });
