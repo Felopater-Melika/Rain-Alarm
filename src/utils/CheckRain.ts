@@ -1,20 +1,18 @@
 import { setWeatherData } from '../state/appSlice';
-import { Audio } from 'expo-av';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../state/store';
+import { AppDispatch } from '../state/store';
 import { getWeather } from '../services/WeatherService';
 import {
   scheduleNotification,
   scheduleAlarm,
 } from '../services/NotificationService';
+import { Audio } from 'expo-av';
 
-const checkRain = async (): Promise<void> => {
-  const acknowledgedRain = useSelector(
-    (state: RootState) => state.app.acknowledgedRain,
-  );
-  const musicFile = useSelector((state: RootState) => state.app.musicFile);
+const checkRain = async (
+  acknowledgedRain: boolean,
+  musicFile: string | null,
+  dispatch: AppDispatch,
+): Promise<void> => {
   const weather = await getWeather(36.300548, -86.604438);
-  const dispatch = useDispatch<AppDispatch>();
   dispatch(setWeatherData(weather));
 
   const rainForecast = weather.hourly.find(

@@ -24,11 +24,7 @@ B
 src/state/store.ts,0\9\094a06db0f810f8c44cb1925ad19c503b10f22c8
 E
 src/state/appSlice.ts,1\8\18cd59cdf94e758ff8ebe85d785f23dd78ed754d
-H
-src/components/Alarm.tsx,0\b\0b39c4c716380a4658d90425b9ad107bacda8987
 P
  __tests__/state/appSlice.test.ts,b\d\bd318835acd5ccb327668ac695591231bf6c50b8
-S
-#__tests__/components/Alarm.test.tsx,0\5\057b438111b2451d277e17a47a06249c34d5f682
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a

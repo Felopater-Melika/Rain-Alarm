@@ -10,6 +10,8 @@ const Alarm = () => {
     (state: RootState) => state.app.acknowledgedRain,
   );
 
+  const musicFile = useSelector((state: RootState) => state.app.musicFile);
+
   const weatherData = useSelector((state: RootState) => state.app.weatherData);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -19,11 +21,14 @@ const Alarm = () => {
   };
 
   useEffect(() => {
-    checkRain();
-    const intervalId = setInterval(checkRain, 12 * 60 * 60 * 1000);
+    checkRain(acknowledgedRain, musicFile, dispatch);
+    const intervalId = setInterval(
+      () => checkRain(acknowledgedRain, musicFile, dispatch),
+      12 * 60 * 60 * 1000,
+    );
 
     return () => clearInterval(intervalId);
-  }, [weatherData, acknowledgedRain]);
+  }, [weatherData, acknowledgedRain, musicFile, dispatch]);
 
   return (
     <>
