@@ -17,9 +17,9 @@ const Alarm = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleToggleAlarm = () => {
+    console.log(dispatch);
     dispatch(setAcknowledgedRain(!acknowledgedRain));
   };
-
   useEffect(() => {
     checkRain(acknowledgedRain, musicFile, dispatch);
     const intervalId = setInterval(

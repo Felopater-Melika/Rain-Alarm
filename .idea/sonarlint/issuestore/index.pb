@@ -20,11 +20,5 @@ D
 setupTests.js,1\2\120dbe42a09fbc66f88a13a7dee1e1fba29d6aae
 =
 test-utils.js,a\1\a1b5389475338ea3450af86c0660de160178e7c3
-B
-src/state/store.ts,0\9\094a06db0f810f8c44cb1925ad19c503b10f22c8
-E
-src/state/appSlice.ts,1\8\18cd59cdf94e758ff8ebe85d785f23dd78ed754d
-P
- __tests__/state/appSlice.test.ts,b\d\bd318835acd5ccb327668ac695591231bf6c50b8
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
