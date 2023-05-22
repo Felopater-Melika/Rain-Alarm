@@ -1,5 +1,5 @@
 import axios from 'axios';
-import WeatherService from '../../src/services/WeatherService';
+import { getWeather } from '../../src/services/WeatherService';
 
 jest.mock('axios');
 
@@ -8,8 +8,7 @@ describe('WeatherService', () => {
     const mockData = { hourly: { weather: [{ main: 'Rain' }] } };
     (axios.get as jest.Mock).mockResolvedValue(mockData);
 
-    const weatherService = WeatherService.getInstance();
-    const data = await weatherService.getWeather(51.5074, -0.1278);
+    const data = await getWeather(51.5074, -0.1278);
 
     expect(data).toEqual(mockData);
     expect(axios.get).toHaveBeenCalledWith(
@@ -18,8 +17,7 @@ describe('WeatherService', () => {
   });
 
   it('fetches weather data from the OpenWeather API', async () => {
-    const weatherService = WeatherService.getInstance();
-    const data = await weatherService.getWeather(51.5074, -0.1278);
+    const data = await getWeather(51.5074, -0.1278);
 
     expect(data).not.toBeNull();
     if (data) {

@@ -1,16 +1,20 @@
 import * as Notifications from 'expo-notifications';
-import NotificationService from '../../src/services/NotificationService';
+import {
+  registerForPushNotificationsAsync,
+  scheduleNotification,
+  startListening,
+  stopListening,
+  scheduleAlarm,
+} from '../../src/services/NotificationService';
 
 jest.mock('expo-notifications');
 
 describe('NotificationService', () => {
-  let notificationService: NotificationService;
   const mockSubscription = {
     remove: jest.fn(),
   };
 
   beforeEach(() => {
-    notificationService = new NotificationService();
     (
       Notifications.addNotificationReceivedListener as jest.Mock
     ).mockReturnValue(mockSubscription);
@@ -33,7 +37,7 @@ describe('NotificationService', () => {
       mockToken,
     );
 
-    await notificationService.registerForPushNotificationsAsync();
+    await registerForPushNotificationsAsync();
 
     expect(Notifications.getPermissionsAsync).toHaveBeenCalled();
     expect(Notifications.requestPermissionsAsync).toHaveBeenCalled();
@@ -46,7 +50,7 @@ describe('NotificationService', () => {
       mockToken,
     );
 
-    const token = await notificationService.registerForPushNotificationsAsync();
+    const token = await registerForPushNotificationsAsync();
 
     expect(Notifications.getExpoPushTokenAsync).toHaveBeenCalled();
     expect(token).toBe(mockToken.data);
@@ -56,7 +60,7 @@ describe('NotificationService', () => {
     const title = 'title';
     const body = 'body';
 
-    await notificationService.scheduleNotification(title, body);
+    await scheduleNotification(title, body);
 
     expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith({
       content: {
@@ -68,7 +72,7 @@ describe('NotificationService', () => {
   });
 
   it('receives a notification', () => {
-    notificationService.startListening();
+    startListening();
 
     expect(Notifications.addNotificationReceivedListener).toHaveBeenCalled();
     expect(
@@ -77,8 +81,8 @@ describe('NotificationService', () => {
   });
 
   it('stops listening to notifications', () => {
-    notificationService.startListening();
-    notificationService.stopListening();
+    startListening();
+    stopListening();
 
     expect(Notifications.removeNotificationSubscription).toHaveBeenCalledTimes(
       2,
@@ -92,7 +96,7 @@ describe('NotificationService', () => {
     const trigger = new Date();
     const soundName = 'alarm.mp3';
 
-    await notificationService.scheduleAlarm(trigger, soundName);
+    await scheduleAlarm(trigger, soundName);
 
     const oneHourBefore = new Date(trigger.getTime() - 60 * 60 * 1000);
     expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith({
