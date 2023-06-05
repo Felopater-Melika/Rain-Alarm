@@ -11,12 +11,12 @@ const checkRain = async (
   acknowledgedRain: boolean,
   musicFile: string | null,
   dispatch: AppDispatch,
-): Promise<void> => {
+): Promise<Date | null> => {
   const weather = await getWeather(36.300548, -86.604438);
   dispatch(setWeatherData(weather));
 
   const rainForecast = weather.hourly.find(
-    (hour: { rain: number }) => hour.rain >= 1,
+    (hour: { rain: number }) => hour.rain >= 0.1,
   );
 
   if (rainForecast) {
@@ -35,8 +35,12 @@ const checkRain = async (
         { shouldPlay: true },
       );
       await sound.playAsync();
+
+      return oneHourBeforeRain;
     }
   }
+
+  return null;
 };
 
 export default checkRain;

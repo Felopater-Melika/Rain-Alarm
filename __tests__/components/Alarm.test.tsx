@@ -31,6 +31,8 @@ describe('Alarm', () => {
   });
 
   it('calls checkRain on mount', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     checkRain.mockClear();
 
     render(
