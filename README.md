@@ -4,6 +4,10 @@
 
 The Rain Alarm App is a weather-based alarm system that alerts users when it's going to rain. The app uses weather data to forecast rain and schedules an alarm to notify the user. It's a handy tool for anyone who needs to plan their day around the weather, such as pet owners, gardeners, or outdoor enthusiasts.
 
+
+![Screenshot](./assets/img.png)
+
+
 ## Features
 
 - Fetches weather data to predict rain.
@@ -24,8 +28,8 @@ The Rain Alarm App is a weather-based alarm system that alerts users when it's g
 To install the app, clone the repository and install the dependencies:
 
 ```
-git clone https://github.com/your-repo/rain-alarm-app.git
-cd rain-alarm-app
+git clone https://github.com/felopater-melika/rainalarm.git
+cd rainalarm
 npm install
 ```
 
