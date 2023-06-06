@@ -19,7 +19,6 @@ export async function getWeather(lat: number, lon: number): Promise<any> {
       })),
     };
 
-    console.log('Weather data:', weatherData);
     return weatherData;
   } catch (error) {
     console.error('Error fetching weather data:', error);

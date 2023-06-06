@@ -6,22 +6,32 @@ import { Provider } from 'react-redux';
 import { store } from './src/state/store';
 import MusicPicker from './src/components/MusicPicker';
 import Alarm from './src/components/Alarm';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 const App = () => {
   return (
     <Provider store={store}>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={eva.dark}>
-        <View
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-        >
-          <Alarm />
+        <View style={styles.appContainer}>
           <MusicPicker />
+          <Alarm />
         </View>
       </ApplicationProvider>
     </Provider>
   );
 };
+
+const styles = StyleSheet.create({
+  appContainer: {
+    padding: 20,
+    backgroundColor: '#1A2138',
+    minHeight: '100%',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export default App;

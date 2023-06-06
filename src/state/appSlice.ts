@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface AppState {
-  musicFile: string | null;
+  musicFile: { uri: string; name: string } | null;
   weatherData: any | null;
   acknowledgedRain: boolean;
 }

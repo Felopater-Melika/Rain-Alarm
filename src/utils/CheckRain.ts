@@ -11,7 +11,7 @@ const checkRain = async (
   acknowledgedRain: boolean,
   musicFile: string | null,
   dispatch: AppDispatch,
-): Promise<Date | null> => {
+): Promise<(() => void) | null> => {
   const weather = await getWeather(36.300548, -86.604438);
   dispatch(setWeatherData(weather));
 
@@ -36,7 +36,7 @@ const checkRain = async (
       );
       await sound.playAsync();
 
-      return oneHourBeforeRain;
+      return () => sound.stopAsync();
     }
   }
 

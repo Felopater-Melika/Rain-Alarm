@@ -2,7 +2,7 @@
 
 ## Description
 
-The Rain Alarm App is a weather-based alarm system that alerts users when it's going to rain. The app uses weather data to forecast rain and schedules an alarm to notify the user. It's a handy tool for anyone who needs to plan their day around the weather, such as pet owners, gardeners, or outdoor enthusiasts.
+The Rain Alarm App is a weather-based alarm system that alerts users when it's going to rain. The app uses weather data to forecast rain and schedules an alarm to notify the user. I created it to remind me to get the dog inside before it rains, so I don't have to shower him.
 
 
 ![Screenshot](./assets/img.png)
@@ -38,11 +38,3 @@ Then, start the app:
 ```
 npm start
 ```
-
-## Future Improvements (TODOs)
-
-- **Better Time Formatting:** Improve the way the app displays the time of the rain forecast. Currently, it shows the time in a raw format, which can be hard to understand. The goal is to display the time in a more user-friendly format.
-
-- **Dark Theme:** Implement a dark theme for the app. This will make it easier to use in low-light conditions and provide a more comfortable viewing experience for users who prefer dark mode.
-
-- **Alarm Off Feature:** Add a feature that allows users to turn off the alarm. Currently, the alarm can only be acknowledged, but not turned off. This feature will give users more control over the alarm.
